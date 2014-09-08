@@ -22,7 +22,7 @@ class ImageListNode():
 		left.next = right
 		right.previous = left
 		os.remove(node.filedirectory)
-		printNode(node)
+		#printNode(node)
 
 class PyImageViewer(QtGui.QWidget):
 	def __init__(self):
@@ -139,14 +139,13 @@ currdir = sys.argv[1]
 print currdir
 app = QtGui.QApplication(sys.argv)
 #http://images.google.com/searchbyimage/upload
-CLIENT_ID = "c9959b70315750d"
-CLIENT_SECRET = "8d4ee9cf1fe047645abf8e8541d1848f58225a83"   # Needed for step 2 and 3
+client = "c9959b70315750d"
+secret = "8d4ee9cf1fe047645abf8e8541d1848f58225a83"   # Needed for step 2 and 3
 
-im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
-auth_url = im.authorization_url('code')
-webbrowser.open(auth_url)
-#pin = input("What is the pin? ") # Python 3x
-#pin = raw_input("What is the pin? ") # Python 2x
+imgur = pyimgur.Imgur(client, secret)
+auth = imgur.authorization_url('code')
+webbrowser.open(auth)
+
 
 
 if __name__ == '__main__':
